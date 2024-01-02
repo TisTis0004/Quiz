@@ -80,6 +80,32 @@ print(np.linalg.matrix_power(A,2))#ENTER THE POWER 2ND Parameter
 print("Diagonal")
 print(np.diag(A))
 ##############################
+import numpy as np
+
+def calculate_differences(original_matrix):
+    # Calculate the first difference matrix
+    first_diff_matrix = np.diff(original_matrix, axis=0)
+    
+    # Calculate the second difference matrix
+    second_diff_matrix = np.diff(first_diff_matrix, axis=0)
+    
+    return first_diff_matrix, second_diff_matrix
+
+# Example matrix
+original_matrix = np.array([#######Change this
+    [1,7,7,4,5],
+    [-3,4,10,2,0],
+    [5,1,36,2,7]
+])
+
+first_difference, second_difference = calculate_differences(original_matrix)
+
+print("Original Matrix:")
+print(original_matrix)
+print("\nFirst Difference Matrix:")
+print(first_difference)
+print("\nSecond Difference Matrix:")
+print(second_difference)
 ##############################
 ##############################
 ##############################
