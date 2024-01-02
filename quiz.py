@@ -108,6 +108,35 @@ print(np.linalg.matrix_power(A,2))#ENTER THE POWER 2ND Parameter
 print("Diagonal")
 print(np.diag(A))
 ##############################
+#First and Second Difference Matrix
+import numpy as np
+
+def first_difference_matrix(matrix):
+    return np.diff(matrix, axis=0)
+
+def second_difference_matrix(matrix):
+    return np.diff(matrix, axis=0, n=2)
+A = np.array([
+    [1, 4, 6],
+    [3, 7, 2],
+    [9, 5, 8],
+    [2, 6, 1]
+])
+
+first_diff = first_difference_matrix(A)
+second_diff = second_difference_matrix(A)
+print("The Original Matrix:")
+print(A)
+
+print()
+
+print("First Difference Matrix:")
+print(first_diff)
+
+print("\nSecond Difference Matrix:")
+print(second_diff)
+
+##############################
 '''
 to find complexity of inner product (2 matrices)
 2*m*n*p
