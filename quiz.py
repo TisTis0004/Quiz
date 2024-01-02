@@ -54,6 +54,34 @@ print("Orthogonal Matrix:")
 
 print(Q)
 ##############################
+#Find Solution of X :
+import numpy as np
+A = np.array([[1,-3,7],[-1,4,-6],[1,4,6],[1,-3,0]])
+b = np.array([3,0,3,1])
+
+def back_subst(R,b_tilde):
+    n = R.shape[0]
+    x = np.zeros(n)
+    for i in reversed(range(n)):
+        x[i] = b_tilde[i]
+        for j in range(i+1,n):
+            x[i] = x[i] - R[i,j]*x[j]
+        x[i] = x[i]/R[i,i]
+    return x
+
+def solve_via_backsub(A,b):
+    Q, R = np.linalg.qr(A)
+    Q = -Q
+    R= -R
+    b_tilde = Q.T @ b
+    x = back_subst(R,b_tilde)
+    return x
+
+print(solve_via_backsub(A,b))
+print()
+# print("Checking:(doesn't have to be perfect)")
+# print(solve_via_backsub(A,b) @ A.T)
+##############################
 #if A was n*n matrix (square) and b was n-vector you can solve this
 #equation Ax = b
 import numpy as np
@@ -79,46 +107,6 @@ print(np.linalg.matrix_power(A,2))#ENTER THE POWER 2ND Parameter
 #if he ask for the diagonal :
 print("Diagonal")
 print(np.diag(A))
-##############################
-import numpy as np
-
-def calculate_differences(original_matrix):
-    # Calculate the first difference matrix
-    first_diff_matrix = np.diff(original_matrix, axis=0)
-    
-    # Calculate the second difference matrix
-    second_diff_matrix = np.diff(first_diff_matrix, axis=0)
-    
-    return first_diff_matrix, second_diff_matrix
-
-# Example matrix
-original_matrix = np.array([#######Change this
-    [1,7,7,4,5],
-    [-3,4,10,2,0],
-    [5,1,36,2,7]
-])
-
-first_difference, second_difference = calculate_differences(original_matrix)
-
-print("Original Matrix:")
-print(original_matrix)
-print("\nFirst Difference Matrix:")
-print(first_difference)
-print("\nSecond Difference Matrix:")
-print(second_difference)
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
-##############################
 ##############################
 '''
 to find complexity of inner product (2 matrices)
